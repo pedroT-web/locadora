@@ -1,0 +1,29 @@
+{
+  "name": "locadora",
+  "version": "1.0.0",
+  "description": "página de locadora de veículos",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedroT-web/locadora.git"
+  },
+  "keywords": [],
+  "author": "Pedro Augusto Taroco Santos",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/pedroT-web/locadora/issues"
+  },
+  "homepage": "https://github.com/pedroT-web/locadora#readme",
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^3.1.14"
+  }
+}
