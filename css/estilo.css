@@ -142,3 +142,20 @@ body{
     justify-content: center;
     height: 100vh;
 }
+
+.container_login{
+    /* max-width: 300px; */
+    display: flex;
+    justify-content: center;
+}
+
+#formulario_login{  
+    width: 400px;
+    height: 400px;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.forms-footer{
+    margin-top: 30px;
+}

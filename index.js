@@ -11,21 +11,21 @@ app.use(cors())
 const porta = 3000;
 app.listen(porta)
 
-let mysql = require("mysql")
-let conexao = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "db_locadora"
-})
-conexao.connect((erro) => {
-    if(erro){
-        console.log("Erro na conexão com o banco")
-        throw erro;
-    } else{
-        console.log("Conexão deu bom")
-    }
-})
+// let mysql = require("mysql")
+// let conexao = mysql.createConnection({
+//     host: "localhost",
+//     user: "root",
+//     password: "",
+//     database: "db_locadora"
+// })
+// conexao.connect((erro) => {
+//     if(erro){
+//         console.log("Erro na conexão com o banco")
+//         throw erro;
+//     } else{
+//         console.log("Conexão deu bom")
+//     }
+// })
 
 app.post("/", (req, res) => {
     console.log("Olá")
@@ -45,5 +45,10 @@ app.post("/reservar/", (req, res) =>{
         // res.send(resultado.insertId);
         console.log("Deu certo")
     })
+})
+
+app.get("/login", (req, res) =>{
+    const dados = req.body
+    console.log(dados)
 })
 
