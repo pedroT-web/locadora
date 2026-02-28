@@ -6,77 +6,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Locadora - Pedro</title>
 
+    <link rel="stylesheet" href="./css/estilo.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
 <body>
-    <section class="header d-flex align-items-center justify-content-center bg-light">
-        <nav class="navbar navbar-expand-lg bg-white w-50" style="width: 400px !important;">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="./index.html">Reservar</a>
+    <section class="fundo_geral">
+        <div class="menu-lateral ">
+            <div class="container pt-3">
+                <div class="header_menu d-flex align-items-center justify-content-between">
+                    <img class="icone_caminhao" src="./img/icone.png" alt="icone_locadora">
+                    <label class="texto_locadora fs-5">Veiculos</label>
+                </div>
+                <hr>
+                <div>
+                    <ul class="navegacoes_menu">
+                        <li class="mb-2">
+                            <a href="#" class="d-flex align-items-center"><i
+                                    class="bi bi-car-front fs-3 me-2"></i>Veiculos</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./reservas.html">Reservas</a>
+                        <li>
+                            <a href="./reservas.html" class="d-flex align-items-center"><i
+                                    class="bi bi-clipboard fs-3 me-2"></i>Reservas</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Cadastrar
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Veículos</a></li>
-                                <li><a class="dropdown-item" href="#">Usuários</a></li>
-                            </ul>
+                        <li>
+                            <a href=""></a>
                         </li>
                     </ul>
                 </div>
             </div>
-        </nav>
-    </section>
-    <section class="d-flex bg-light justify-content-center" style="height: 100vh;">
-        <div class="container mt-4">
-            <table class="table table-striped shadow">
-                <thead>
-                    <tr>
-                        <th scope="col">Modelo</th>
-                        <th scope="col">Marca</th>
-                        <th scope="col">Placa</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Valor Diaria</th>
-                        <th scope="col">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Fiesta</td>
-                        <td>Ford</td>
-                        <td>ABC-1234</td>
-                        <td>Hatch</td>
-                        <td>R$ 120,00</td>
-                        <td>Disponível</td>
-                    </tr>
-                    <tr>
-                        <td>Civic</td>
-                        <td>Honda</td>
-                        <td>XYZ-5678</td>
-                        <td>Sedan</td>
-                        <td>R$ 180,00</td>
-                        <td>Alugado</td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
+        <section class="d-flex bg-light justify-content-center secao_cards" style="height: 100vh;">
+            <div class="container mt-4">
+                <div class="row linha_cards">
+                    <div class="card shadow col-sm-5 p-2">
+                        <img src="./img/ferrari.jpg" class="card-img" alt="...">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="juncao_informacoes_cars">
+                                        <label class="d-block fs-5">Modelo: <span id="modeloVeiculo">Civic</span></label>
+                                        <label class="d-block fs-5">Marca: <span id="marcaVeiculo">Honda</span></label>
+                                        <label class="d-block fs-5">Valor Diaria: <span id="diariaVeiculo"></span></label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="juncao_informacoes_cars">
+                                        <label class="d-block fs-5">Categoria: <span id="categoriaVeiculo">Luxo</span></label>
+                                        <label class="d-block fs-5">Placa: <span id="placaVeiculo">KXO-9872</span></label>
+                                        <label class="d-block fs-5">Status: <span id="statusVeiculo">Alugado</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="card_footer d-flex">
+                                <button class="btn btn-danger w-50">Deletar Veiculo</button>
+                                <button class="btn btn-warning w-50">Editar Veiculo</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card col-sm-5">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text d-flex">
+                            <div class="d-flex juncao_informacoes_cars">
+                                <label class="">Modelo</label>
+                                <label class="">Marca</label>
+                            </div>
+                            <label class="">Placa</label>
+                            <label class="">Categoria</label>
+                            <label class="">Valor Diaria</label>
+                            <label class="">Status</label>
+
+                            <th scope="col">Ações</th>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </section>
 </body>
 

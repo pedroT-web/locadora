@@ -159,3 +159,77 @@ body{
 .forms-footer{
     margin-top: 30px;
 }
+
+.menu-lateral{
+    height: 100vh;
+    width: 190px;
+    background-color: #445EE5 !important;
+    /* position: absolute; */
+}
+
+.icone_caminhao{
+    width: 50px;
+    height: 50px;
+}
+
+.texto_locadora{
+    color: #FFC107;
+}
+
+.navegacoes_menu{
+    padding: 0px;
+}
+
+.navegacoes_menu li > a{
+    text-decoration: none;
+    color: #FFC107;
+}
+
+.navegacoes_menu li > a:hover{
+    transform: translateY(-3px);
+    transition: ease 0.4s;
+    color: #ffc10793;
+}
+
+.fundo_geral{
+    display: flex;
+    width: 100% !important;
+}
+
+.secao_cards{
+    width: 100%;
+    padding: 20px;
+}
+
+.linha_cards{
+    column-gap: 100px;
+    row-gap: 40px;
+}
+
+.card-text{
+    display: flex;
+    flex-direction: column;
+}
+
+.juncao_informacoes_cars{
+    column-gap: 100px;
+}
+
+.card_footer{
+    gap: 20px;
+}
+
+.card{
+    border-radius: 15px !important;
+    transition: ease 0.2s;
+}
+
+.card:hover{
+    scale: 1.01;
+    transform: translateY(-3px);
+    transition: ease 0.4s;
+}
+
+.card-img{
+    border-radius: 15px !important;
+}
