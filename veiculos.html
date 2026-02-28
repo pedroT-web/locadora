@@ -29,19 +29,28 @@
                             <a href="#" class="d-flex align-items-center"><i
                                     class="bi bi-car-front fs-3 me-2"></i>Veiculos</a>
                         </li>
-                        <li>
+                        <li class="mb-2">
                             <a href="./reservas.html" class="d-flex align-items-center"><i
                                     class="bi bi-clipboard fs-3 me-2"></i>Reservas</a>
                         </li>
-                        <li>
-                            <a href=""></a>
+                        <li class="acesso_usuarios">
+                            <a href="./usuarios.html" class="d-flex align-items-center"><i
+                                    class="bi bi-people fs-3 me-2"></i>Usuários</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
         <section class="d-flex bg-light justify-content-center secao_cards" style="height: 100vh;">
-            <div class="container mt-4">
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col text-end">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#modalVeiculos" id="botao_modalCadVeiculo">
+                            Cadastrar Novo Veiculo
+                        </button>
+                    </div>
+                </div>
                 <div class="row linha_cards">
                     <div class="card shadow col-sm-5 p-2">
                         <img src="./img/ferrari.jpg" class="card-img" alt="...">
@@ -49,23 +58,29 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="juncao_informacoes_cars">
-                                        <label class="d-block fs-5">Modelo: <span id="modeloVeiculo">Civic</span></label>
+                                        <label class="d-block fs-5">Modelo: <span
+                                                id="modeloVeiculo">Civic</span></label>
                                         <label class="d-block fs-5">Marca: <span id="marcaVeiculo">Honda</span></label>
-                                        <label class="d-block fs-5">Valor Diaria: <span id="diariaVeiculo"></span></label>
+                                        <label class="d-block fs-5">Valor Diaria: <span
+                                                id="diariaVeiculo"></span></label>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="juncao_informacoes_cars">
-                                        <label class="d-block fs-5">Categoria: <span id="categoriaVeiculo">Luxo</span></label>
-                                        <label class="d-block fs-5">Placa: <span id="placaVeiculo">KXO-9872</span></label>
-                                        <label class="d-block fs-5">Status: <span id="statusVeiculo">Alugado</span></label>
+                                        <label class="d-block fs-5">Categoria: <span
+                                                id="categoriaVeiculo">Luxo</span></label>
+                                        <label class="d-block fs-5">Placa: <span
+                                                id="placaVeiculo">KXO-9872</span></label>
+                                        <label class="d-block fs-5">Status: <span
+                                                id="statusVeiculo">Alugado</span></label>
                                     </div>
                                 </div>
                             </div>
                             <hr>
                             <div class="card_footer d-flex">
                                 <button class="btn btn-danger w-50">Deletar Veiculo</button>
-                                <button class="btn btn-warning w-50">Editar Veiculo</button>
+                                <button class="btn btn-warning w-50 text-white" data-bs-toggle="modal"
+                                    data-bs-target="#modalEditarVeiculo">Editar Veiculo</button>
                             </div>
                         </div>
                     </div>
@@ -90,6 +105,150 @@
             </div>
         </section>
     </section>
+
+    <div class="modal fade" id="modalVeiculos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-light">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastro de Veículo</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    <form class="row g-3 validar" id="fomulario_cadastroVeiculo" novalidate>
+                        <div class="col-md-4">
+                            <label for="validationCustom01" class="form-label">Modelo</label>
+                            <input type="text" class="form-control shadow-sm" id="modelo" required>
+                            <div class="invalid-feedback">
+                                Informe o modelo
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="validationCustom02" class="form-label">Marca</label>
+                            <input type="text" class="form-control shadow-sm" id="marca" required>
+                            <div class="invalid-feedback">
+                                Informe a marca
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="validationCustom02" class="form-label">Placa</label>
+                            <input type="text" class="form-control shadow-sm" id="placa" required>
+                            <div class="invalid-feedback">
+                                Informe a placa
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom03" class="form-label">Valor da Diária</label>
+                            <input type="number" class="form-control shadow-sm" id="valorDiaria" required>
+                            <div class="invalid-feedback">
+                                Informe o valor da diária
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom04" class="form-label">Categoria</label>
+                            <select class="form-select shadow-sm" id="categoria" required>
+                                <option selected disabled value="">Selecione</option>
+                                <option>...</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Selecione uma categoria
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="validationCustom03" class="form-label">Imagem do Veículo</label>
+                            <input type="text" class="form-control shadow-sm" id="imagem" required>
+                            <div class="invalid-feedback">
+                                Insira o endereço correto
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" type="button" id="botao_cadastroVeiculo">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalEditarVeiculo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-light">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Veículo</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    <form class="row g-3 validar" id="fomulario_cadastroVeiculo" novalidate>
+                        <div class="col-md-6">
+                            <label for="validationCustom01" class="form-label">Modelo</label>
+                            <input type="text" class="form-control shadow-sm" id="modelo" required>
+                            <div class="invalid-feedback">
+                                Informe o modelo
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom02" class="form-label">Marca</label>
+                            <input type="text" class="form-control shadow-sm" id="marca" required>
+                            <div class="invalid-feedback">
+                                Informe a marca
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom02" class="form-label">Placa</label>
+                            <input type="text" class="form-control shadow-sm" id="placa" required>
+                            <div class="invalid-feedback">
+                                Informe a placa
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom03" class="form-label">Valor da Diária</label>
+                            <input type="number" class="form-control shadow-sm" id="valorDiaria" required>
+                            <div class="invalid-feedback">
+                                Informe o valor da diária
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom04" class="form-label">Categoria</label>
+                            <select class="form-select shadow-sm" id="categoria" required>
+                                <option selected disabled value="">Selecione</option>
+                                <option>...</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Selecione uma categoria
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom04" class="form-label">status</label>
+                            <select class="form-select shadow-sm" id="statusVeiculo" required>
+                                <option selected disabled value="">Selecione</option>
+                                <option value="disponivel">Disponível</option>
+                                <option value="alugado">Alugado</option>
+                                <option value="manutencao">Manutenção</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Selecione uma categoria
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="validationCustom03" class="form-label">Imagem do Veículo</label>
+                            <input type="text" class="form-control shadow-sm" id="imagem" required>
+                            <div class="invalid-feedback">
+                                Insira o endereço correto
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" type="button" id="botao_cadastroVeiculo">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/app-veiculos.js"></script>
 </body>
 
 </html>

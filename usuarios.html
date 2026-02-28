@@ -27,21 +27,28 @@
                     <ul class="navegacoes_menu">
                         <li class="mb-2">
                             <a href="./veiculos.html" class="d-flex align-items-center"><i
-                                    class="bi bi-car-front fs-3 me-2"></i>Veiculos</a>
+                                    class="bi bi-car-front fs-3 me-2"></i>Veículos</a>
                         </li>
-                        <li>
-                            <a href="#" class="d-flex align-items-center"><i
+                        <li class="mb-2">
+                            <a href="./reservas.html" class="d-flex align-items-center"><i
                                     class="bi bi-clipboard fs-3 me-2"></i>Reservas</a>
                         </li>
-                        <li>
-                            <a href=""></a>
+                        <li class="acesso_usuarios">
+                            <a href="#" class="d-flex align-items-center"><i
+                                    class="bi bi-people fs-3 me-2"></i>Usuários</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
         <section class="d-flex bg-light justify-content-center secao_cards" style="height: 100vh;">
-            <div class="container mt-4">
+            <div class="container">
+                <div class="col text-end mb-4">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUsuario"
+                        id="botao_modalCadReserva">
+                        Cadastrar Novo Usuário
+                    </button>
+                </div>
                 <table class="table table-striped shadow">
                     <thead>
                         <tr>
@@ -57,7 +64,10 @@
                             <td>pedro@gmail.com</td>
                             <td>Administrador</td>
                             <td>
-                                <button class="btn btn-warning">Editar</button>
+                                <button type="button" class="btn btn-warning text-white" data-bs-toggle="modal"
+                                    data-bs-target="#modalEditarUsuario" id="botao_modalCadReserva">
+                                    Editar
+                                </button>
                                 <button class="btn btn-danger">Deletar</button>
                             </td>
                         </tr>
@@ -66,6 +76,113 @@
             </div>
         </section>
     </section>
+
+    <div class="modal fade" id="modalUsuario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-light">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar Usuário</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    <form class="row g-3 validar" id="formulario_cadUsuario" novalidate>
+                        <div class="col-md-6">
+                            <label for="validationCustom01" class="form-label">Nome do Usuario</label>
+                            <input type="text" class="form-control shadow-sm" id="cadastroNomeUsuario" required>
+                            <div class="invalid-feedback">
+                                Informe o nome do usuario
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom02" class="form-label">Email do Usuario</label>
+                            <input type="text" class="form-control shadow-sm" id="cadastroEmailUsuario" required>
+                            <div class="invalid-feedback">
+                                Informe o email do usuario
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom02" class="form-label">Senha do Usuario</label>
+                            <input type="password" class="form-control shadow-sm" id="cadastroSenhaUsuario" required>
+                            <div class="invalid-feedback">
+                                Informe a senha do usuário
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom02" class="form-label">Confirmar senha do Usuario</label>
+                            <input type="password" class="form-control shadow-sm" id="cadastroConfirmarSenhaUsuario"
+                                required>
+                            <div class="invalid-feedback">
+                                Confirme a senha do usuário
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="validationCustom04" class="form-label">Nível de Acesso</label>
+                            <select class="form-select shadow-sm" id="categoria" required>
+                                <option selected disabled value="">Selecione</option>
+                                <option class="admin">Administrador</option>
+                                <option class="operario">Operário</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Selecione uma categoria
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" type="button" id="botao_cadUsuario">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalEditarUsuario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-light">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Usuário</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    <form class="row g-3 validar" id="formulario_cadUsuario" novalidate>
+                        <div class="col-md-6">
+                            <label for="validationCustom01" class="form-label">Nome do Usuario</label>
+                            <input type="text" class="form-control shadow-sm" id="cadastroNomeUsuario" required>
+                            <div class="invalid-feedback">
+                                Informe o nome do usuario
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom02" class="form-label">Email do Usuario</label>
+                            <input type="text" class="form-control shadow-sm" id="cadastroEmailUsuario" required>
+                            <div class="invalid-feedback">
+                                Informe o email do usuario
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="validationCustom04" class="form-label">Nível de Acesso</label>
+                            <select class="form-select shadow-sm" id="categoria" required>
+                                <option selected disabled value="">Selecione</option>
+                                <option class="admin">Administrador</option>
+                                <option class="operario">Operário</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Selecione uma categoria
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" type="button" id="botao_cadUsuario">Finalizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/app-usuarios.js"></script>
 </body>
 
 </html>

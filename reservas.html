@@ -29,19 +29,26 @@
                             <a href="./veiculos.html" class="d-flex align-items-center"><i
                                     class="bi bi-car-front fs-3 me-2"></i>Veiculos</a>
                         </li>
-                        <li>
+                        <li class="mb-2">
                             <a href="#" class="d-flex align-items-center"><i
                                     class="bi bi-clipboard fs-3 me-2"></i>Reservas</a>
                         </li>
-                        <li>
-                            <a href=""></a>
+                        <li class="acesso_usuarios">
+                            <a href="./usuarios.html" class="d-flex align-items-center"><i
+                                    class="bi bi-people fs-3 me-2"></i>Usuários</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
         <section class="d-flex bg-light justify-content-center secao_cards" style="height: 100vh;">
-            <div class="container mt-4">
+            <div class="container">
+                <div class="col text-end mb-4">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalReserva"
+                        id="botao_modalCadReserva">
+                        Realizar nova Reserva
+                    </button>
+                </div>
                 <table class="table table-striped shadow">
                     <thead>
                         <tr>
@@ -65,7 +72,7 @@
                             <td>R$ 180,00</td>
                             <td>26/02/2026</td>
                             <td>
-                                <button class="btn btn-warning">Editar</button>
+                                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditarReserva">Editar</button>
                                 <button class="btn btn-danger">Deletar</button>
                             </td>
                         </tr>
@@ -74,6 +81,96 @@
             </div>
         </section>
     </section>
+
+    <div class="modal fade" id="modalReserva" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-light">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Reservar Veículo</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    <form class="row g-3 validar" id="formulario_cadReserva" novalidate>
+                        <div class="col-md-6">
+                            <label for="validationCustom01" class="form-label">Nome do Cliente</label>
+                            <input type="text" class="form-control shadow-sm" id="reservaNomeCliente" required>
+                            <div class="invalid-feedback">
+                                Informe o nome do cliente
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom02" class="form-label">Email do Cliente</label>
+                            <input type="text" class="form-control shadow-sm" id="reservaEmailCliente" required>
+                            <div class="invalid-feedback">
+                                Informe o email do cliente
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="validationCustom04" class="form-label">Selecionar Veículo</label>
+                            <select class="form-select shadow-sm" id="veiculo" required>
+                                <option selected disabled value="">Selecione</option>
+                                <option>...</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Selecione um veículo
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" type="button" id="botao_cadReserva">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalEditarReserva" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-light">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Reserva</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    <form class="row g-3 validar" id="formulario_cadReserva" novalidate>
+                        <div class="col-md-6">
+                            <label for="validationCustom01" class="form-label">Nome do Cliente</label>
+                            <input type="text" class="form-control shadow-sm" id="reservaNomeCliente" required>
+                            <div class="invalid-feedback">
+                                Informe o nome do cliente
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom02" class="form-label">Email do Cliente</label>
+                            <input type="text" class="form-control shadow-sm" id="reservaEmailCliente" required>
+                            <div class="invalid-feedback">
+                                Informe o email do cliente
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="validationCustom04" class="form-label">Selecionar Veículo</label>
+                            <select class="form-select shadow-sm" id="veiculo" required>
+                                <option selected disabled value="">Selecione</option>
+                                <option>...</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Selecione um veículo
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" type="button" id="botao_cadReserva">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/app-reserva.js"></script>
 </body>
 
 </html>
