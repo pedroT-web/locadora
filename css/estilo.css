@@ -177,12 +177,12 @@ body{
 }
 
 .fundo_login{
-    background-color: #FFC107;
+    background-color: #ffc107;
 }
 
 #formulario_login{
-    background-color: #FFC107;
-    color: white;
+    background-color: #ffffff;
+    color: #cc9e14;
 }
 
 #botao_login{
