@@ -176,6 +176,27 @@ body{
     color: #FFC107;
 }
 
+.fundo_login{
+    background-color: #FFC107;
+}
+
+#formulario_login{
+    background-color: #FFC107;
+    color: white;
+}
+
+#botao_login{
+    background: #d19e04 !important;
+    border: none;
+    transition: ease 0.2s;
+
+}
+
+#botao_login:hover{
+    background: #ae8603e4 !important;
+    transition: ease 0.2s;
+}
+
 .navegacoes_menu{
     padding: 0px;
 }
