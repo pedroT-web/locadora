@@ -49,7 +49,7 @@
                         Realizar nova Reserva
                     </button>
                 </div>
-                <table class="table table-striped shadow">
+                <table class="table table-striped shadow tabela_reservas">
                     <thead>
                         <tr>
                             <th scope="col" id="nomeCliente">Nome do Cliente</th>
@@ -58,24 +58,13 @@
                             <th scope="col" id="categoriaCarro">Categoria</th>
                             <th scope="col" id="placaCarro">Placa</th>
                             <th scope="col" id="diariaCarro">Valor Diaria</th>
-                            <th scope="col" id="dataReserva">Data da Reserva</th>
+                            <th scope="col" id="dataReserva">Data de Início da reserva</th>
+                            <th scope="col" id="dataReserva">Data de Fim da reserva</th>
                             <th scope="col">Ações</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Pedro A. T. Santos</td>
-                            <td>pedro@gmail.com</td>
-                            <td>Civic</td>
-                            <td>Luxo</td>
-                            <td>XYZ-5678</td>
-                            <td>R$ 180,00</td>
-                            <td>26/02/2026</td>
-                            <td>
-                                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditarReserva">Editar</button>
-                                <button class="btn btn-danger">Deletar</button>
-                            </td>
-                        </tr>
+                    <tbody class="corpo_tabelaReservas">
+
                     </tbody>
                 </table>
             </div>
@@ -106,11 +95,24 @@
                                 Informe o email do cliente
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom02" class="form-label">Inicio a da Reserva</label>
+                            <input type="date" class="form-control shadow-sm" id="reservaInicialData" required>
+                            <div class="invalid-feedback">
+                                Informe a data inical da reserva
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom02" class="form-label">Fim da Reserva</label>
+                            <input type="date" class="form-control shadow-sm" id="reservaFinalData" required>
+                            <div class="invalid-feedback">
+                                Informe a data final da reserva
+                            </div>
+                        </div>
                         <div class="col-md-12">
                             <label for="validationCustom04" class="form-label">Selecionar Veículo</label>
                             <select class="form-select shadow-sm" id="veiculo" required>
                                 <option selected disabled value="">Selecione</option>
-                                <option>...</option>
                             </select>
                             <div class="invalid-feedback">
                                 Selecione um veículo
@@ -170,7 +172,8 @@
         </div>
     </div>
 
-    <script src="./js/app-reserva.js"></script>
+    <script src="./js/app-reservaOperario.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

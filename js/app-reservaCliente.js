@@ -1,5 +1,5 @@
-let dataAtual = new Date();
-let dataFormatada = dataAtual.toISOString().split("T")[0];
+var dataAtual = new Date();
+var dataFormatada = dataAtual.toISOString().split("T")[0];
 
 function fnValidacaoBootstrap() {
     'use strict'
@@ -31,37 +31,20 @@ document.addEventListener("DOMContentLoaded", () => {
             form.classList.add("was-validated");
             return;
         } else {
-            // fnVerificarLogin()
             console.log("Login válido");
+            fnLimparCampos()
         }
     });
 
 });
 
-// document.addEventListener("DOMContentLoaded", () => {
-
-//     const form = document.getElementById("formulario_cadReserva");
-
-//     botaoCadastrarReserva.addEventListener("click", () => {
-
-//         if (!form.checkValidity()) {
-//             form.classList.add("was-validated");
-//             return;
-//         } else {
-//             // fnVerificarLogin()
-//             console.log("Login válido");
-//         }
-//     });
-
-// });
-
-
 function fnCadastrarReservaCliente() {
     let dadosReservaCliente = {
         nome_cliente: document.getElementById("nomeClienteReserva").value,
         email_cliente: document.getElementById("emailClienteReserva").value,
-        veiculo_id: 1,
-        data_reserva: dataFormatada
+        veiculo_id: document.getElementById("veiculoClienteReserva").value,
+        data_inicio_reserva: document.getElementById("reservaDataInicial").value,
+        data_fim_reserva:document.getElementById("reservaDataFinal").value
     }
 
     console.dir(dadosReservaCliente)
@@ -69,7 +52,7 @@ function fnCadastrarReservaCliente() {
     fetch("http://localhost:3000/reservar/", {
         method: "POST",
         headers: { 'Content-type': 'application/json' },
-        body: JSON.stringify(dadosReserva)
+        body: JSON.stringify(dadosReservaCliente)
     })
         .then(resposta => resposta.status)
         .then((dados) => {
@@ -88,24 +71,30 @@ function fnValidarReserva() {
     const tipoVeiculo = document.getElementById("tipoVeiculo")
 }
 
-function fnCadastrarReservaOperario() {
-    let dadosReservaOperario = {
-        nome_cliente: document.getElementById("reservaNomeCliente").value,
-        email_cliente: document.getElementById("reservaEmailCliente").value,
-        veiculo_id: 1,
-        data_reserva: dataFormatada
-    }
-
-    console.dir(dadosReservaOperario);
-}
-
-
 botaoReserva.addEventListener("click", () => {
     fnCadastrarReservaCliente()
 })
 
+function fnCarregarDadosVeiculos() {
+    fetch("http://localhost:3000/veiculos", { method: "GET" })
+        .then(resposta => resposta.json())
+        .then((veiculos) => {
+            veiculos.forEach(veiculo => {
+                fnListarVeiculosSelect(veiculo)
+            })
+        })
+        .catch(erro => console.log(erro.message))
+}
+fnCarregarDadosVeiculos()
 
-const botaoCadastrarReserva = document.getElementById("botao_cadReserva")
-botaoCadastrarReserva.addEventListener("click", () => {
-    fnCadastrarReservaOperario()
-})
+function fnListarVeiculosSelect(veiculo) {
+    let select = `
+      <option value="${veiculo.id}">${veiculo.modelo} - ${veiculo.categoria}</option>
+    `
+
+    document.getElementById("veiculoClienteReserva").innerHTML += select
+}
+
+function fnLimparCampos(){
+    document.getElementById("formulario_reservaCliente").reset()
+}

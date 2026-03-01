@@ -164,7 +164,7 @@ body{
     position: fixed;
     z-index: 11;
     width: 190px;
-    background-color: #445EE5 !important;
+    background-color: #0F172A !important;
     /* position: absolute; */
 }
 
@@ -178,12 +178,12 @@ body{
 }
 
 .fundo_login{
-    background-color: #ffc107;
+    background-color: #0F172A;
 }
 
 #formulario_login{
     background-color: #ffffff;
-    color: #cc9e14;
+    color: #0F172A;
 }
 
 #botao_login{

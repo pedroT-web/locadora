@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <section class="d-flex bg-light justify-content-center secao_cards" style="height: 100vh;">
+        <section class="d-flex bg-light justify-content-center secao_cards" style="min-height: 100vh">
             <div class="container">
                 <div class="row mb-4">
                     <div class="col text-end">
@@ -52,55 +52,6 @@
                     </div>
                 </div>
                 <div class="row linha_cards">
-                    <div class="card shadow col-sm-5 p-2">
-                        <img src="./img/ferrari.jpg" class="card-img" alt="...">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="juncao_informacoes_cars">
-                                        <label class="d-block fs-5">Modelo: <span
-                                                id="modeloVeiculo">Civic</span></label>
-                                        <label class="d-block fs-5">Marca: <span id="marcaVeiculo">Honda</span></label>
-                                        <label class="d-block fs-5">Valor Diaria: <span
-                                                id="diariaVeiculo"></span></label>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="juncao_informacoes_cars">
-                                        <label class="d-block fs-5">Categoria: <span
-                                                id="categoriaVeiculo">Luxo</span></label>
-                                        <label class="d-block fs-5">Placa: <span
-                                                id="placaVeiculo">KXO-9872</span></label>
-                                        <label class="d-block fs-5">Status: <span
-                                                id="statusVeiculo">Alugado</span></label>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="card_footer d-flex">
-                                <button class="btn btn-danger w-50">Deletar Veiculo</button>
-                                <button class="btn btn-warning w-50 text-white" data-bs-toggle="modal"
-                                    data-bs-target="#modalEditarVeiculo">Editar Veiculo</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card col-sm-5">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text d-flex">
-                            <div class="d-flex juncao_informacoes_cars">
-                                <label class="">Modelo</label>
-                                <label class="">Marca</label>
-                            </div>
-                            <label class="">Placa</label>
-                            <label class="">Categoria</label>
-                            <label class="">Valor Diaria</label>
-                            <label class="">Status</label>
-
-                            <th scope="col">Ações</th>
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -148,7 +99,9 @@
                             <label for="validationCustom04" class="form-label">Categoria</label>
                             <select class="form-select shadow-sm" id="categoria" required>
                                 <option selected disabled value="">Selecione</option>
-                                <option>...</option>
+                                <option value="Luxo">Luxo</option>
+                                <option value="Familia">Família</option>
+                                <option value="Basico">Básico</option>
                             </select>
                             <div class="invalid-feedback">
                                 Selecione uma categoria
@@ -249,6 +202,8 @@
     </div>
 
     <script src="./js/app-veiculos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>

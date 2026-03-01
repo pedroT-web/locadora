@@ -16,28 +16,39 @@
             <img src="img/icone.png" alt="ícone de caminhão">
             <h2 class="titulo">Encontre o veículo certo para você!</h2>
             <p class="texto mb-3">Preencha as informações abaixo</p>
-            <form id="formulario_reservaCliente" class=" validar">
-                <div class="mb-3">
+            <form id="formulario_reservaCliente" class=" validar row">
+                <div class="col-12 mb-3">
                     <label for="validationCustom02" class="form-label rotulo">Nome</label>
-                    <input type="text" class="form-control " id="nomeClienteReserva" required>
+                    <input type="text" class="form-control limpeza" id="nomeClienteReserva" required>
                     <div class="invalid-feedback mb-3">
-                        Confirme a senha do usuário
+                       Informe o nome do usuario
                     </div>
                 </div>
-                <div class="mb-3">
+                <div class="col-12 mb-3">
                     <label for="validationCustom02" class="form-label rotulo">E-mail</label>
-                    <input type="text" class="form-control " id="emailClienteReserva" required>
+                    <input type="text" class="form-control limpeza" id="emailClienteReserva" required>
                     <div class="invalid-feedback mb-3">
-                        Confirme a senha do usuário
+                        Informe o email do usuario
                     </div>
                 </div>
-                <div class="mb-2">
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom02" class="form-label rotulo">Inicio a da Reserva</label>
+                    <input type="date" class="form-control shadow-sm limpeza" id="reservaDataInicial" required>
+                    <div class="invalid-feedback">
+                        Informe a data inical da reserva
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustom02" class="form-label rotulo">Fim da Reserva</label>
+                    <input type="date" class="form-control shadow-sm limpeza" id="reservaDataFinal" required>
+                    <div class="invalid-feedback">
+                        Informe a data final da reserva
+                    </div>
+                </div>
+                <div class="col-12 mb-2">
                     <label for="validationCustom04" class="form-label rotulo">Selecione o veículo</label>
-                    <select class="campo-texto form-select shadow-sm" id="veiculoClienteReserva" required>
+                    <select class="campo-texto form-select shadow-sm limpeza" id="veiculoClienteReserva" required>
                         <option selected disabled value="">Selecione</option>
-                        <option>Kwid</option>
-                        <option>Lancer</option>
-                        <option>Ferrari</option>
                     </select>
                     <div class="invalid-feedback">
                         Selecione um nível
@@ -53,7 +64,7 @@
         </div>
     </main>
 
-    <script src="./js/app-reserva.js"></script>
+    <script src="./js/app-reservaCliente.js"></script>
 </body>
 
 </html>

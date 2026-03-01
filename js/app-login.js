@@ -19,7 +19,6 @@ function fnValidacaoBootstrap() {
 }
 
 const botaoLogin = document.getElementById("botao_login")
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const form = document.getElementById("formulario_login");
@@ -32,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             fnVerificarLogin()
             console.log("Login válido");
+            window.location.reload()
         }
     });
 
@@ -45,20 +45,20 @@ function fnVerificarLogin() {
 
     console.dir(formLogin)
 
-    // fetch("http://localhost:3000/login", {
-    //     method: "GET",
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(formLogin)
-    // })
-    //     .then(resposta => resposta.status)
-    //     .then((dados) => {
-    //         if (dados == 201) {
-    //             console.log("Foi")
-    //         } else if (dados == 401) {
-    //             console.log("Usuario ou Senha inválido.")
-    //         } else {
-    //             console.log("Algum erro aconteceu, tente mais tarde!!")
-    //         }
-    //     })
-    //     .catch(erro => console.log(erro.message))
+    fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formLogin)
+    })
+        .then(resposta => resposta.status)
+        .then((dados) => {
+            if (dados == 200) {
+                console.log("Foi")
+            } else if (dados == 401) {
+                console.log("Usuario ou Senha inválido.")
+            } else {
+                console.log("Algum erro aconteceu, tente mais tarde!!")
+            }
+        })
+        .catch(erro => console.log(erro.message))
 }
