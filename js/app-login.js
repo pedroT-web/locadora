@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             fnVerificarLogin()
             console.log("Login válido");
-            window.location.reload()
+            // window.location.reload()
         }
     });
 
@@ -53,7 +53,7 @@ function fnVerificarLogin() {
         .then(resposta => resposta.status)
         .then((dados) => {
             if (dados == 200) {
-                console.log("Foi")
+                window.location.href = "../reservas.html"
             } else if (dados == 401) {
                 console.log("Usuario ou Senha inválido.")
             } else {

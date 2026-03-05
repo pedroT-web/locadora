@@ -104,9 +104,8 @@ function fnListarVeiculosDisponiveis() {
     fetch("http://localhost:3000/veiculos/disponiveis", { method: "GET" })
         .then(resposta => resposta.json())
         .then((veiculos) => {
-            console.log(veiculos)
             veiculos.forEach(veiculo => {
-                fnSelectVeiculos(veiculo)
+                fnSelectViculosDisponiveis(veiculo)
             })
         })
         .catch(erro => console.log(erro.message))
@@ -115,12 +114,38 @@ function fnListarVeiculosDisponiveis() {
 fnListarVeiculosDisponiveis()
 
 function fnSelectVeiculos(veiculo) {
+    const desabilitar = veiculo.status !== "Disponível" ? "disabled" : "";
+
+    let veiculos = `
+         <option class="lista_veiculos" value="${veiculo.id}" ${desabilitar}>
+            ${veiculo.modelo} - ${veiculo.categoria}
+        </option>
+    `
+
+
+    document.getElementById("editarReservaVeiculo").innerHTML += veiculos
+}
+
+function fnSelectViculosDisponiveis(veiculo) {
     let veiculos = `
          <option value="${veiculo.id}">${veiculo.modelo} - ${veiculo.categoria}</option>
     `
 
-    document.getElementById("editarReservaVeiculo").innerHTML += veiculos
+    document.getElementById("veiculo").innerHTML += veiculos
 }
+
+function fnListarTodosVeiculos() {
+    fetch("http://localhost:3000/veiculos", { method: "GET" })
+        .then(resposta => resposta.json())
+        .then((veiculos) => {
+            veiculos.forEach(veiculo => {
+                fnSelectVeiculos(veiculo)
+            })
+        })
+        .catch(erro => console.log(erro.message))
+}
+
+fnListarTodosVeiculos()
 
 
 function fnLimparCampos() {
@@ -170,6 +195,7 @@ function fnAbrirModal(botao) {
     console.dir(botao)
 
     const id = botao.dataset.id
+    console.log(id)
     fetch(`http://localhost:3000/reserva/${id}`, { method: "GET" })
         .then((resposta) => resposta.json())
         .then((reservas) => {
@@ -186,7 +212,7 @@ function fnPreencherCamposModal(reserva) {
     document.getElementById("editarFinalData").value = reserva.data_fim_reserva
     document.getElementById("editarReservaVeiculo").value = reserva.veiculo_id
 
-    console.log( reserva.nome_cliente)
+    console.log(reserva.nome_cliente)
 }
 
 function fnSalvarVeiculos() {

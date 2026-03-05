@@ -86,32 +86,37 @@ app.delete("/reserva/:id", (req, res) => {
 
 app.get("/reserva/:id", (req, res) => {
     const id = req.params.id
-    conexao.query(`SELECT * FROM agendamentos WHERE id = ?`, [id], (erro, resultado) => {
+
+    conexao.query(`SELECT * FROM agendamentos WHERE id = ${id}`, (erro, resultado) => {
         if (erro) {
             res.send(erro)
         }
+        res.send(resultado)
     })
 })
 
 app.post("/login", (req, res) => {
+
     const { email, senha } = req.body
+
     conexao.query(`SELECT * FROM usuarios WHERE email = ?`, [email], async (erro, resultado) => {
         if (erro) {
-            res.status(500)
+            res.sendStatus(500)
             console.log("Erro no servidor")
         } if (resultado.length === 0) {
-            res.status(401)
+            res.sendStatus(401)
             console.log("Usuário Não encontrado")
+            return
         }
 
         const usuario = resultado[0]
         const senhaValida = await bcrypt.compare(senha, usuario.senha)
 
         if (!senhaValida) {
-            res.status(401)
+            res.sendStatus(401)
             console.log("Senha Incorreta")
         } else {
-            res.status(200)
+            res.sendStatus(200)
             console.log("Login Realizado!!")
         }
     })
@@ -238,7 +243,3 @@ app.get("/usuario/:id", (req, res) => {
         res.send(usuario)
     })
 })
-
-// app.get("/veiculos/valiacao", (req, res) => {
-//     conexao.query("SELECT * FROM veiculos", (erro, lista_veiculos, campos))
-// })
