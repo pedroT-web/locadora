@@ -1,5 +1,8 @@
 const express = require("express");
+const session = require("express-session")
 const app = express()
+
+app.use(express.urlencoded({ extended: true }))
 
 const bcrypt = require("bcrypt")
 
@@ -81,6 +84,15 @@ app.delete("/reserva/:id", (req, res) => {
     })
 })
 
+app.get("/reserva/:id", (req, res) => {
+    const id = req.params.id
+    conexao.query(`SELECT * FROM agendamentos WHERE id = ?`, [id], (erro, resultado) => {
+        if (erro) {
+            res.send(erro)
+        }
+    })
+})
+
 app.post("/login", (req, res) => {
     const { email, senha } = req.body
     conexao.query(`SELECT * FROM usuarios WHERE email = ?`, [email], async (erro, resultado) => {
@@ -153,6 +165,16 @@ app.get("/veiculo/:id", (req, res) => {
     })
 })
 
+app.put("/veiculo/:id", (req, res) => {
+    const id = req.params.id
+    const dados = req.body
+    conexao.query(`UPDATE veiculos SET ? WHERE id = ${id}`, [dados], (erro, resultado) => {
+        if (erro) {
+            res.send(erro)
+        }
+    })
+})
+
 app.post("/usuario", async (req, res) => {
     const dadosUsuario = req.body
 
@@ -202,11 +224,11 @@ app.put("/usuario/:id", (req, res) => {
     const id = req.params.id
     const dados = req.body
     conexao.query(`UPDATE usuarios SET ? WHERE id = ${id}`, [dados], (erro, resultado) => {
-        if(erro){
+        if (erro) {
             res.send(erro)
         }
 
-        res.send({"status": 200, "Message": "Atualizado com Sucesso!!"})
+        res.send({ "status": 200, "Message": "Atualizado com Sucesso!!" })
     })
 })
 

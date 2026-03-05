@@ -155,9 +155,11 @@ document.addEventListener("click", (e) => {
     }
 })
 
+let id_veiculo = 0
+
 function fnAbrirModalEditarVeiculos(botao) {
-    const id = botao.dataset.id
-    fetch(`http://localhost:3000/veiculo/${id}`, { method: "GET" })
+    id_veiculo = botao.dataset.id
+    fetch(`http://localhost:3000/veiculo/${id_veiculo}`, { method: "GET" })
         .then(resposta => resposta.json())
         .then((veiculos) => {
             veiculos.forEach(veiculo => {
@@ -166,7 +168,7 @@ function fnAbrirModalEditarVeiculos(botao) {
         })
 }
 
-function fnPreencherEditarVeiculos(veiculo){
+function fnPreencherEditarVeiculos(veiculo) {
     console.log(veiculo.modelo)
     const inputModel = document.getElementById("editarModelo")
     const inputMarca = document.getElementById("editarMarca")
@@ -184,3 +186,32 @@ function fnPreencherEditarVeiculos(veiculo){
     inputStatus.value = veiculo.status
     inputFoto.value = veiculo.foto
 }
+
+function fnSalvarVeiculo() {
+    let formDados = {
+        modelo: document.getElementById("editarModelo").value,
+        marca: document.getElementById("editarMarca").value,
+        placa: document.getElementById("editarPlaca").value,
+        categoria: document.getElementById("editarCategoria").value,
+        valor_diaria: document.getElementById("editarValorDiaria").value,
+        status: document.getElementById("editarStatusVeiculo").value,
+        foto: document.getElementById("editarImagem").value
+    }
+
+    console.dir(formDados)
+
+    fetch(`http://localhost:3000/veiculo/${id_veiculo}`, {
+        method: "PUT",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formDados)
+    })
+    .then((resposta) => resposta.json)
+    .then((dados) => {
+
+    })
+}
+
+document.getElementById("botao_editarVeiculo").addEventListener("click", () => {
+    fnSalvarVeiculo()
+    window.location.reload()
+})

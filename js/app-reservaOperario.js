@@ -1,6 +1,3 @@
-// let dataAtual = new Date();
-// let dataFormatada = dataAtual.toISOString().split("T")[0];
-
 function fnValidacaoBootstrap() {
     'use strict'
 
@@ -94,7 +91,7 @@ function fnMontarListaReservas(reserva) {
         <td>${reserva.data_inicio}</td>
         <td>${reserva.data_fim}</td>
         <td>
-            <button class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#modalEditarReserva" data-id="${reserva.id}">Editar</button>
+            <button class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#modalEditarReserva" data-id="${reserva.id}" onclick="fnAbrirModal(this)">Editar</button>
             <button class="btn btn-danger botao_deletarReserva" data-id="${reserva.id}">Deletar</button>
         </td>
     </tr>
@@ -107,6 +104,7 @@ function fnListarVeiculosDisponiveis() {
     fetch("http://localhost:3000/veiculos/disponiveis", { method: "GET" })
         .then(resposta => resposta.json())
         .then((veiculos) => {
+            console.log(veiculos)
             veiculos.forEach(veiculo => {
                 fnSelectVeiculos(veiculo)
             })
@@ -121,7 +119,7 @@ function fnSelectVeiculos(veiculo) {
          <option value="${veiculo.id}">${veiculo.modelo} - ${veiculo.categoria}</option>
     `
 
-    document.getElementById("veiculo").innerHTML += veiculos
+    document.getElementById("editarReservaVeiculo").innerHTML += veiculos
 }
 
 
@@ -138,6 +136,7 @@ function fnDeletarReserva(id) {
         })
         .catch(erro => console.log(erro.message))
 }
+
 
 document.addEventListener("click", (e) => {
     if (e.target.classList.contains("botao_deletarReserva")) {
@@ -166,3 +165,38 @@ document.addEventListener("click", (e) => {
         });
     }
 })
+
+function fnAbrirModal(botao) {
+    console.dir(botao)
+
+    const id = botao.dataset.id
+    fetch(`http://localhost:3000/reserva/${id}`, { method: "GET" })
+        .then((resposta) => resposta.json())
+        .then((reservas) => {
+            reservas.forEach(reserva => {
+                fnPreencherCamposModal(reserva)
+            })
+        })
+}
+
+function fnPreencherCamposModal(reserva) {
+    document.getElementById("editarReservaNomeCliente").value = reserva.nome_cliente
+    document.getElementById("editarReservaEmailCliente").value = reserva.email_cliente
+    document.getElementById("editarInicialData").value = reserva.data_inicio_reserva
+    document.getElementById("editarFinalData").value = reserva.data_fim_reserva
+    document.getElementById("editarReservaVeiculo").value = reserva.veiculo_id
+
+    console.log( reserva.nome_cliente)
+}
+
+function fnSalvarVeiculos() {
+    let formDados = {
+        nome_cliente: document.getElementById("editarReservaNomeCliente").value,
+        email_cliente: document.getElementById("editarReservaEmailCliente").value,
+        data_inicio_reserva: document.getElementById("editarInicialData").value,
+        data_fim_reserva: document.getElementById("editarFinalData").value,
+        veiculo_id: document.getElementById("editarReservaVeiculo").value
+    }
+
+    console.dir(formDados)
+}

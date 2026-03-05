@@ -140,23 +140,36 @@
                     <form class="row g-3 validar" id="formulario_cadReserva" novalidate>
                         <div class="col-md-6">
                             <label for="validationCustom01" class="form-label">Nome do Cliente</label>
-                            <input type="text" class="form-control shadow-sm" id="reservaNomeCliente" required>
+                            <input type="text" class="form-control shadow-sm" id="editarReservaNomeCliente" required>
                             <div class="invalid-feedback">
                                 Informe o nome do cliente
                             </div>
                         </div>
                         <div class="col-md-6">
                             <label for="validationCustom02" class="form-label">Email do Cliente</label>
-                            <input type="text" class="form-control shadow-sm" id="reservaEmailCliente" required>
+                            <input type="text" class="form-control shadow-sm" id="editarReservaEmailCliente" required>
                             <div class="invalid-feedback">
                                 Informe o email do cliente
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom02" class="form-label">Inicio a da Reserva</label>
+                            <input type="date" class="form-control shadow-sm" id="editarInicialData" required>
+                            <div class="invalid-feedback">
+                                Informe a data inical da reserva
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom02" class="form-label">Fim da Reserva</label>
+                            <input type="date" class="form-control shadow-sm" id="editarFinalData" required>
+                            <div class="invalid-feedback">
+                                Informe a data final da reserva
+                            </div>
+                        </div>
                         <div class="col-md-12">
                             <label for="validationCustom04" class="form-label">Selecionar Veículo</label>
-                            <select class="form-select shadow-sm" id="veiculo" required>
+                            <select class="form-select shadow-sm" id="editarReservaVeiculo" required>
                                 <option selected disabled value="">Selecione</option>
-                                <option>...</option>
                             </select>
                             <div class="invalid-feedback">
                                 Selecione um veículo
@@ -166,7 +179,7 @@
                 </div>
                 <div class="modal-footer bg-light">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button class="btn btn-primary" type="button" id="botao_cadReserva">Cadastrar</button>
+                    <button class="btn btn-primary" type="button" id="botao_editarReserva">Salvar</button>
                 </div>
             </div>
         </div>
