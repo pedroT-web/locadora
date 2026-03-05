@@ -4,7 +4,6 @@
 function fnValidacaoBootstrap() {
     'use strict'
 
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
     const forms = document.querySelectorAll('.validar')
 
     // Loop over them and prevent submission
@@ -104,8 +103,8 @@ function fnMontarListaReservas(reserva) {
     document.querySelector(".corpo_tabelaReservas").innerHTML += linha_reserva
 }
 
-function fnListarVeiculos() {
-    fetch("http://localhost:3000/veiculos", { method: "GET" })
+function fnListarVeiculosDisponiveis() {
+    fetch("http://localhost:3000/veiculos/disponiveis", { method: "GET" })
         .then(resposta => resposta.json())
         .then((veiculos) => {
             veiculos.forEach(veiculo => {
@@ -115,7 +114,7 @@ function fnListarVeiculos() {
         .catch(erro => console.log(erro.message))
 }
 
-fnListarVeiculos()
+fnListarVeiculosDisponiveis()
 
 function fnSelectVeiculos(veiculo) {
     let veiculos = `

@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         } else {
             console.log("Login válido");
+            fnCadastrarReservaCliente()
             fnLimparCampos()
         }
     });
@@ -44,7 +45,7 @@ function fnCadastrarReservaCliente() {
         email_cliente: document.getElementById("emailClienteReserva").value,
         veiculo_id: document.getElementById("veiculoClienteReserva").value,
         data_inicio_reserva: document.getElementById("reservaDataInicial").value,
-        data_fim_reserva:document.getElementById("reservaDataFinal").value
+        data_fim_reserva: document.getElementById("reservaDataFinal").value
     }
 
     console.dir(dadosReservaCliente)
@@ -65,18 +66,8 @@ function fnCadastrarReservaCliente() {
         .catch(erro => console.log(erro.message))
 }
 
-function fnValidarReserva() {
-    const nome = document.getElementById("nome")
-    const email = document.getElementById("email")
-    const tipoVeiculo = document.getElementById("tipoVeiculo")
-}
-
-botaoReserva.addEventListener("click", () => {
-    fnCadastrarReservaCliente()
-})
-
-function fnCarregarDadosVeiculos() {
-    fetch("http://localhost:3000/veiculos", { method: "GET" })
+function fnListarVeiculosDisponiveis() {
+    fetch("http://localhost:3000/veiculos/disponiveis", { method: "GET" })
         .then(resposta => resposta.json())
         .then((veiculos) => {
             veiculos.forEach(veiculo => {
@@ -85,7 +76,7 @@ function fnCarregarDadosVeiculos() {
         })
         .catch(erro => console.log(erro.message))
 }
-fnCarregarDadosVeiculos()
+fnListarVeiculosDisponiveis()
 
 function fnListarVeiculosSelect(veiculo) {
     let select = `
@@ -95,6 +86,6 @@ function fnListarVeiculosSelect(veiculo) {
     document.getElementById("veiculoClienteReserva").innerHTML += select
 }
 
-function fnLimparCampos(){
+function fnLimparCampos() {
     document.getElementById("formulario_reservaCliente").reset()
 }

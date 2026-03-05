@@ -136,37 +136,39 @@
                     <form class="row g-3 validar" id="fomulario_cadastroVeiculo" novalidate>
                         <div class="col-md-6">
                             <label for="validationCustom01" class="form-label">Modelo</label>
-                            <input type="text" class="form-control shadow-sm" id="modelo" required>
+                            <input type="text" class="form-control shadow-sm" id="editarModelo" required>
                             <div class="invalid-feedback">
                                 Informe o modelo
                             </div>
                         </div>
                         <div class="col-md-6">
                             <label for="validationCustom02" class="form-label">Marca</label>
-                            <input type="text" class="form-control shadow-sm" id="marca" required>
+                            <input type="text" class="form-control shadow-sm" id="editarMarca" required>
                             <div class="invalid-feedback">
                                 Informe a marca
                             </div>
                         </div>
                         <div class="col-md-6">
                             <label for="validationCustom02" class="form-label">Placa</label>
-                            <input type="text" class="form-control shadow-sm" id="placa" required>
+                            <input type="text" class="form-control shadow-sm" id="editarPlaca" required>
                             <div class="invalid-feedback">
                                 Informe a placa
                             </div>
                         </div>
                         <div class="col-md-6">
                             <label for="validationCustom03" class="form-label">Valor da Diária</label>
-                            <input type="number" class="form-control shadow-sm" id="valorDiaria" required>
+                            <input type="number" class="form-control shadow-sm" id="editarValorDiaria" required>
                             <div class="invalid-feedback">
                                 Informe o valor da diária
                             </div>
                         </div>
                         <div class="col-md-6">
                             <label for="validationCustom04" class="form-label">Categoria</label>
-                            <select class="form-select shadow-sm" id="categoria" required>
+                            <select class="form-select shadow-sm" id="editarCategoria" required>
                                 <option selected disabled value="">Selecione</option>
-                                <option>...</option>
+                                <option value="Basico">Básico</option>
+                                <option value="Familia">Família</option>
+                                <option value="Luxo">Luxo</option>
                             </select>
                             <div class="invalid-feedback">
                                 Selecione uma categoria
@@ -174,11 +176,11 @@
                         </div>
                         <div class="col-md-6">
                             <label for="validationCustom04" class="form-label">status</label>
-                            <select class="form-select shadow-sm" id="statusVeiculo" required>
+                            <select class="form-select shadow-sm" id="editarStatusVeiculo" required>
                                 <option selected disabled value="">Selecione</option>
-                                <option value="disponivel">Disponível</option>
-                                <option value="alugado">Alugado</option>
-                                <option value="manutencao">Manutenção</option>
+                                <option value="Disponível">Disponível</option>
+                                <option value="Alugado">Alugado</option>
+                                <option value="Manutenção">Manutenção</option>
                             </select>
                             <div class="invalid-feedback">
                                 Selecione uma categoria
@@ -186,7 +188,7 @@
                         </div>
                         <div class="col-md-12">
                             <label for="validationCustom03" class="form-label">Imagem do Veículo</label>
-                            <input type="text" class="form-control shadow-sm" id="imagem" required>
+                            <input type="text" class="form-control shadow-sm" id="editarImagem" required>
                             <div class="invalid-feedback">
                                 Insira o endereço correto
                             </div>

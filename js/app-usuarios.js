@@ -82,7 +82,7 @@ function fnMontarLinhaUsuario(usuario) {
         <td>${usuario.email}</td>
         <td>${usuario.nivel}</td>
         <td>
-            <button type="button" class="btn btn-warning text-white botaoEditarUsuario" data-bs-toggle="modal"
+            <button onclick="abrirModalUsuario(this)" type="button" class="btn btn-warning text-white botaoEditarUsuario" data-bs-toggle="modal"
                 data-bs-target="#modalEditarUsuario" id="botao_modalCadReserva" data-id="${usuario.id}">
                 Editar
             </button>
@@ -131,18 +131,62 @@ document.addEventListener("click", (e) => {
     }
 });
 
-function fnEditarUsuario(){
+const botao = document.querySelectorAll(".botaoEditarUsuario")
+console.dir(botao)
 
+let id_usuario = 0
+
+function abrirModalUsuario(botao) {
+    console.dir(botao)
+    id_usuario = botao.dataset.id
+
+    const id = botao.dataset.id
+    fetch(`http://localhost:3000/usuario/${id}`, { method: "GET" })
+        .then(resposta => resposta.json())
+        .then((usuarios) => {
+            usuarios.forEach(usuario => {
+                fnPreencherEditarUsuario(usuario)
+            })
+        })
 }
 
-function abrirModalUsuario(usuario){
-    const botao = document.querySelector(".botaoEditarUsuario")
-    fetch("http://localhost:3000/usuario/:id", { method: "GET" })
-    .then(resposta => resposta.json())
-    .then(dados => {
+function fnPreencherEditarUsuario(usuario) {
+    const inputNome = document.getElementById("editarNomeUsuario")
+    const inputEmail = document.getElementById("editarEmailUsuario")
+    const selectCategoria = document.getElementById("editarCategoria")
+
+    inputNome.value = usuario.nome
+    inputEmail.value = usuario.email
+    selectCategoria.value = usuario.nivel
+}
+
+function salvarUsuario() {
+    let formDados = {
+        id: id_usuario,
+        nome: document.getElementById("editarNomeUsuario").value,
+        email: document.getElementById("editarEmailUsuario").value,
+        nivel: document.getElementById("editarCategoria").value
+    }
+
+    console.dir(formDados)
+
+    
+    fetch(`http://localhost:3000/usuario/${id_usuario}`, {
+        method: "PUT",
+        headers: { 'Content-Type': "application/json" },
+        body: JSON.stringify(formDados)
+    })
+    .then((resultado) => resultado.json())
+    .then((dados) => {
 
     })
 }
+
+document.getElementById("botao_editUsuario").addEventListener("click", () => {
+    salvarUsuario()
+    window.location.reload()
+})
+
 
 
 

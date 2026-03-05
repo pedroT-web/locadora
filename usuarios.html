@@ -138,24 +138,24 @@
                     <form class="row g-3 validar" id="formulario_cadUsuario" novalidate>
                         <div class="col-md-6">
                             <label for="validationCustom01" class="form-label">Nome do Usuario</label>
-                            <input type="text" class="form-control shadow-sm" id="cadastroNomeUsuario" required>
+                            <input type="text" class="form-control shadow-sm" id="editarNomeUsuario" required>
                             <div class="invalid-feedback">
                                 Informe o nome do usuario
                             </div>
                         </div>
                         <div class="col-md-6">
                             <label for="validationCustom02" class="form-label">Email do Usuario</label>
-                            <input type="email" class="form-control shadow-sm" id="cadastroEmailUsuario" required>
+                            <input type="email" class="form-control shadow-sm" id="editarEmailUsuario" required>
                             <div class="invalid-feedback">
                                 Informe o email do usuario
                             </div>
                         </div>
                         <div class="col-md-12">
                             <label for="validationCustom04" class="form-label">Nível de Acesso</label>
-                            <select class="form-select shadow-sm" id="categoria" required>
+                            <select class="form-select shadow-sm" id="editarCategoria" required>
                                 <option selected disabled value="">Selecione</option>
-                                <option class="admin">Administrador</option>
-                                <option class="operario">Operário</option>
+                                <option value="administrador">Administrador</option>
+                                <option value="operario">Operário</option>
                             </select>
                             <div class="invalid-feedback">
                                 Selecione um nivel
@@ -165,7 +165,7 @@
                 </div>
                 <div class="modal-footer bg-light">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button class="btn btn-primary" type="button" id="botao_cadUsuario">Finalizar</button>
+                    <button class="btn btn-primary" type="button" id="botao_editUsuario">Salvar</button>
                 </div>
             </div>
         </div>

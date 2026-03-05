@@ -45,6 +45,7 @@ app.post("/reservar/", (req, res) => {
             }
             console.log("Deu certo")
         })
+    conexao.query("UPDATE veiculos SET status = 'Alugado' WHERE id = ?", [dados.veiculo_id])
 })
 
 app.get("/reservas", (req, res) => {
@@ -110,6 +111,12 @@ app.get("/veiculos", (req, res) => {
     })
 })
 
+app.get("/veiculos/disponiveis", (req, res) => {
+    conexao.query("SELECT * FROM veiculos WHERE status = 'Disponível'", (erro, lista_veiculos, campos) => {
+        res.send(lista_veiculos)
+    })
+})
+
 app.post("/veiculo", (req, res) => {
     const dadosVeiculo = req.body
 
@@ -136,6 +143,13 @@ app.delete("/veiculo/:id", (req, res) => {
         } else {
             console.log("Usuario deletado com sucesso!!!")
         }
+    })
+})
+
+app.get("/veiculo/:id", (req, res) => {
+    const id = req.params.id
+    conexao.query(`SELECT * FROM veiculos WHERE id = ?`, [id], (erro, veiculo, campos) => {
+        res.send(veiculo)
     })
 })
 
@@ -185,5 +199,24 @@ app.delete("/usuario/:id", (req, res) => {
 })
 
 app.put("/usuario/:id", (req, res) => {
-    
+    const id = req.params.id
+    const dados = req.body
+    conexao.query(`UPDATE usuarios SET ? WHERE id = ${id}`, [dados], (erro, resultado) => {
+        if(erro){
+            res.send(erro)
+        }
+
+        res.send({"status": 200, "Message": "Atualizado com Sucesso!!"})
+    })
 })
+
+app.get("/usuario/:id", (req, res) => {
+    const id = req.params.id
+    conexao.query(`SELECT * FROM usuarios WHERE id = ?`, [id], (erro, usuario, campos) => {
+        res.send(usuario)
+    })
+})
+
+// app.get("/veiculos/valiacao", (req, res) => {
+//     conexao.query("SELECT * FROM veiculos", (erro, lista_veiculos, campos))
+// })

@@ -109,7 +109,7 @@ function fnMontarCardsVeiculos(veiculo) {
                             <hr>
                             <div class="card_footer d-flex">
                             <button class="btn btn-warning w-50 text-white" data-bs-toggle="modal"
-                                data-bs-target="#modalEditarVeiculo">Editar Veiculo</button>
+                                data-bs-target="#modalEditarVeiculo" onclick="fnAbrirModalEditarVeiculos(this)" data-id="${veiculo.id}">Editar Veiculo</button>
                                 <button class="btn btn-danger w-50 botao_deletarVeiculo" data-id="${veiculo.id}">Deletar Veiculo</button>
                             </div>
                         </div>
@@ -154,3 +154,33 @@ document.addEventListener("click", (e) => {
         });
     }
 })
+
+function fnAbrirModalEditarVeiculos(botao) {
+    const id = botao.dataset.id
+    fetch(`http://localhost:3000/veiculo/${id}`, { method: "GET" })
+        .then(resposta => resposta.json())
+        .then((veiculos) => {
+            veiculos.forEach(veiculo => {
+                fnPreencherEditarVeiculos(veiculo)
+            })
+        })
+}
+
+function fnPreencherEditarVeiculos(veiculo){
+    console.log(veiculo.modelo)
+    const inputModel = document.getElementById("editarModelo")
+    const inputMarca = document.getElementById("editarMarca")
+    const inputPlaca = document.getElementById("editarPlaca")
+    const inputDiaria = document.getElementById("editarValorDiaria")
+    const inputCategoria = document.getElementById("editarCategoria")
+    const inputStatus = document.getElementById("editarStatusVeiculo")
+    const inputFoto = document.getElementById("editarImagem")
+
+    inputModel.value = veiculo.modelo
+    inputMarca.value = veiculo.marca
+    inputPlaca.value = veiculo.placa
+    inputDiaria.value = veiculo.valor_diaria
+    inputCategoria.value = veiculo.categoria
+    inputStatus.value = veiculo.status
+    inputFoto.value = veiculo.foto
+}
